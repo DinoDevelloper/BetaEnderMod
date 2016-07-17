@@ -1,0 +1,354 @@
+item.Saphir.name=Saphir
+item.ObsiIngot.name=Obsidien Ingot
+item.Royalite.name=Amethyse
+item.Darkanite.name=Darkanite
+item.hulmini.name=hulmini
+item.DiamondRenforced.name=Diamond Renforced
+item.IronRenforced.name=Iron Renforced
+item.Darkanite.name=Volcanite
+item.Maxitomate.name=Maxi Tomate
+tile.testBlock.name=Hulmini Block
+tile.BrickStonarck.name=Stonarck Brick
+item.DragonCrystal.name=Dragon Crystal
+item.EnderiteRenforced.name=Enderite Renforced
+item.BoueCroquette.name=Event Croquette
+item.BoatTnt.name=Boat Tnt
+item.Croquette.name=Rain bow Croquette
+item.SkinFire.name=Skin Fire
+item.Pickaxe3x3.name=Pickaxe 3x3
+item.EndermireSpawner.name=Relique d'enderdeath
+item.BoueCroquette.name=Event Croquette
+item.DiamondCroquette.name=Diamond Croquette
+item.WoodAxe.name=Wood Axe
+item.RainbownCroquette.name=Rainbown Croquette
+item.BaieOrange.name=Baie Orange 
+item.GoldenCroquette.name=Green Croquette
+item.SaphirCroquette.name=Saphir Croquette
+item.PotionFly.name=Chicken Potion
+item.PotionFall.name=Fall Potion
+potion.customEffect=Flotte
+potion.fall=fall
+item.StickJump.name=Stick Jump
+item.OrbYellow.name=Orb Yellow
+tile.MachineBaie.name=Ustractor Baie
+entity.Boss.name=Ender Warrior Statue
+item.OrbGreen.name=Orb Green
+item.SkinBlue.name=Skin Blue
+item.SkinDirt.name=Skin Dirt
+item.SkinEnder.name=Skin Ender
+item.EnderiteCroquette.name=Enderite Croquette
+item.RubisCroquette.name=Rubis Croquette
+item.AmethysteCroquette.name=Amethyste Croquette
+item.VolcaniteCroquette.name=Volcanite Croquette
+tile.falling.name=Block Farlink
+item.Relique.name=Relique Death Horse
+item.IronHammer.name=Hammer Iron
+tile.MegaSpanwer.name=Mega Spawner
+tile.DragonCrystalOre.name=Dragon Crystal Ore
+item.BaieSpeed.name=Baie Speed
+item.DeathArrow.name=Death Arrow
+tile.Box.name=Box
+tile.FurnaceEd.name=Amethyste Furnace
+item.BaieResistance.name=Baie Black and White
+item.BaieHeal.name=Baie Heal +
+Ultimate.mode.message.1=Knowback Power
+Ultimate.mode.message.2=Fire Power
+Ultimate.mode.message.0=Damage Power
+item.BaieBlack.name=Baie Black
+item.BaieWhite.name=Baie White
+item.MegaEnder.name=Orb Ender
+item.OrbYellow.name=Orb Yellow
+tile.UltimeBox.name=EnderDeath Box
+item.UltimeKey.name=EnderDeath Key
+item.DragoniteHelmet.name=Dragonite Helmet
+item.BaiePink.name=Baie Pink
+item.DragoniteLeggings.name=Dragonite Leggings
+item.PickaxeSpawner.name=Pickaxe Spawner
+item.NaturalKey.name=Natural Key
+tile.NaturalBox.name=Natural Box
+item.Wand.name=Stick Boom
+tile.DamageBlock.name=Magma Block
+item.PieceBaieRainbow.name=Piece Baie Rainbow
+item.BoneSacred.name=Gem Sacred
+item.EnderHeart.name=EnderTitan Heart
+item.SwordGoblin.name=Dagger King Goblin
+item.Cobalt.name=Cobalt
+item.Bomber.name=Bomber
+enderdeath.container.backpack=Burse Container
+item.BlockBossGoblin.name=Spawner Boss King Goblin
+item.NetherStarsIngot.name=Nether Stars Ingot
+item.NetherStarsNugget.name=Nether Stars Nugget
+
+tile.Alloyer.name=Extractor
+
+item.speedUpgrade.name=Speed Up Extractor
+
+item.SitckRessistance.name=Stick Ressitance
+
+tile.AntiPiston.name=Cobblestone Renforced
+
+item.StickIron.name=Stick Iron
+
+
+
+
+item.OrbBlue.name=Orb Blue
+
+item.FeatherChestplate.name=Wings
+
+
+item.FeatherLeggings.name=Leggings AntiKnowback
+
+item.OrbBLue.name=Orb Blue
+
+item.StickStrenght.name=Stick Strenght
+
+item.OrbRed.name=Orb Red
+
+item.InvisibleBlock.name=Invisible Block
+
+item.FireStick.name=Stick Fire Ressistance
+
+tile.IronLadder.name=Saphir Ladder
+
+item.RapidBow.name=Emerauld Bow
+
+tile.Xp.name=Plant Xp
+item.BaieSeedXp.name=Xp Seeds
+
+item.BaieSeedRainbow.name=Baie RainBow Seed
+
+item.BowGreetWood.name=Enderite Bow
+
+item.StickSpeed.name=Stick Speed
+
+tile.BaiePlantRainBow.name=Baie Plant RainBow
+
+item.shield.name=Shield Skeletons
+
+item.StickHealA.name=Stick Heal
+
+item.StickHeal.name=Stick Heal +
+
+item.StickJolo.name=Stick Clear
+
+item.DeathKey.name=Gold Key
+
+tile.BoxKey.name=Gold Box
+
+item.Rubis.name=Rubis
+
+tile.EggDragonRed.name=Egg Familiar
+
+
+
+
+
+tile.SpeedAdmin.name=Speed Admin
+
+tile.BlockSpectral.name=Block Spectral
+
+item.RubisRenforced.name=Rubis Renforced
+
+item.BottleSaturation.name=Potion Saturation
+
+tile.BaieCake.name=Baie Cake
+item.BaiePlantYellowItem.name=Baie Seeds Yellow
+item.BaieRedItem.name=Baie Red Seeds
+item.BaiePlantItem.name=Baie Seeds
+item.BaieBlueItem.name=Baie Seeds Blue
+item.BaiePlantGreenItem.name=Baie Green Seeds
+
+item.RubisPickaxe.name=Rubis Pickaxe
+item.RubisAxe.name=Rubis Axe
+item.RubisShovel.name=Rubis Shovel
+item.RubisHoe.name=Rubis Hoe
+item.RubisSword.name=Rubis Sword
+
+item.PickaxeSaphir.name=Saphir Pickaxe
+item.AxeSaphir.name=Saphir Axe
+item.ShovelSaphir.name=Saphir Shovel
+item.HoeSaphir.name=Saphir Hoe
+item.SwordSaphir.name=Saphir Sword
+
+item.PickaxeObsi.name=Obsidien Pickaxe
+item.AxeObsi.name=Obsidien Axe
+item.ShovelObsi.name=Obsidien Shovel
+item.SwordObsi.name=Obsidien Sword
+item.HoeObsi.name=Obsidien Hoe
+
+item.PickaxeRoyalite.name=Amethyse Pickaxe
+item.AxeRoyalite.name=Amethyse Axe
+item.ShovelRoyalite.name=Amethyse Shovel
+item.HoeRoyalite.name=Amethyse Hoe
+item.SwordRoyalite.name=Amethyse Sword
+
+item.SwordStars.name=Axe Of Guerre
+item.SwordOfStars.name=Ender Sword
+item.RubisHelmet.name=Rubis Helmet
+item.RubisChestplate.name=Rubis Chestplate
+item.RubisLeggings.name=Rubis Leggings
+item.RubisBoot.name=Rubis Boots
+
+item.SaphirHelmet.name=Saphir Helmet
+item.SaphirChestplate.name=Saphir Chestplate
+item.SaphirLeggings.name=Saphir Leggings
+item.SaphirBoots.name=Saphir Boots
+
+item.ObsidienHelmet.name=Obsidien Helmet
+item.ObsidienChestplate.name=Obsidien Chestplate
+item.ObsidienLeggings.name=Obsidien Leggings
+item.ObsidienBoots.name=Obsidien Boots
+
+item.EnderiteHelmet.name=Enderite Helmet
+item.EnderiteChestplate.name=Enderite Chestplate
+item.EnderiteLeggings.name=Enderite Leggings
+item.EnderiteBoots.name=Enderite Boots
+
+
+
+
+item.RoyaliteHelmet.name=Amethyse Helmet
+item.RoyaliteChestplate.name=Amethyse Chestplate
+item.RoyaliteLeggings.name=Amethyse Leggings
+item.RoyaliteBoots.name=Amethyse Boots
+
+item.DarkaniteHelmet.name=Volcanite Helmet
+item.DarkaniteChestplate.name=Volcanite Chestplate
+item.DarkaniteLeggings.name=Volcanite Leggings
+item.DarkaniteBoots.name=Volcanite Boots
+
+item.RoyaliteHelmet.name=Amethyse Helmet
+item.RoyaliteChestplate.name=Amethyse Chestplate
+item.RoyaliteLeggings.name=Amethyse Leggings
+item.RoyaliteBoots.name=Amethyse Boots
+item.PickaxeEnderite.name=Enderite Pickaxe
+item.AxeEnderite.name=Enderite Axe
+item.ShovelEnderite.name=Enderite Shovel
+item.HoeEnderite.name=Enderite Hoe
+item.SwordEnderite.name=Enderite Sword
+
+item.PickaxeDarkanite.name=Volcanite Pickaxe
+item.AxeDarkanite.name=Volcanite Axe.
+item.ShovelDarkanite.name=Volcanite Shovel
+item.HoeDarkanite.name=Volcanite Hoe
+item.SwordDarkanite.name=Volcanite Sword
+
+item.NuggetRubis.name=Nugget Rubis
+item.NuggetSaphir.name=Nugget Saphir
+item.NuggetRoyalite.name=Nugget Amethyse
+item.NuggetDarkanite.name=Nugget Volcanite
+
+item.AxePlant.name=Axe Plant
+
+item.Banana.name=Banana
+
+
+
+
+item.SwordF.name=Axe of blood
+
+
+item.SwordFire.name=Sword Fire
+item.BootFeather.name=Boot Feather Falling
+item.BootWind.name=Boots Speed
+
+
+
+item.Pickaxe.name=Super Pickaxe
+
+item.Baie.name=Baie
+item.BaieRed.name=Baie Red
+item.BaieBlue.name=Baie Blue
+item.BaieGreen.name=Baie Green
+item.BaieYellow.name=Baie Yellow
+item.BaieChocolate.name=Baie Of Chocolate
+item.BaieOfRainbow.name=Baie Of RainBow
+
+item.CDHub.name=Ender Music
+item.record.modid:cd.desc=Hub Music
+
+
+item.Enderite.name=Enderite
+item.EnderCoincs.name=Ender Coins
+item.NuggetEnderite.name=Nugget Enderite
+item.GreatNuggetEnderite.name=Great nugget Enderite 
+tile.EnderiteOre.name=Enderite Ore
+tile.EnderiteBlock.name=Enderite Block
+
+
+
+sword.mode.message.1=fire Mob
+sword.mode.message.2=fire Animal
+sword.mode.message.0=fire Player
+
+
+
+
+
+tile.InvisibleBlock.name=Block Invisible
+tile.JumpBlock.name=Jump Block
+tile.SnowBlock.name=Slow Block
+tile.SpeedBlock.name=Speed Block
+tile.AntiAFK.name=Anti Afk
+
+tile.RubisOre.name=Rubis Ore
+tile.SaphirOre.name=Saphir Ore
+tile.HulminiOre.name=Hulmini Ore
+tile.RoyaliteOre.name=Amethyse Ore
+tile.DarkaniteNetherack.name=Volcanite Ore
+tile.ObsidienRenforced.name=Obsidien Renforced
+tile.BlockMiner.name=Block Miner
+tile.XpOre.name=Xp Ore
+
+
+item.FattingXp.name=Fatting Xp
+
+tile.RubisBlock.name=Rubis Block
+tile.SaphirBlock.name=Saphir Block
+tile.RoyaliteBlock.name=Amethyse Block
+tile.DarkaniteBlock.name=Volcanite Block
+
+
+
+
+tile.TnTMeeb.name=TnT Meeb
+tile.LoabBlock.name=Loab Block
+
+item.BottleHaste.name=Potion Haste
+
+item.RobberSword.name=Robber Sword
+item.Ireen.name=Ireen
+
+
+item.DirtShovel.name=Dirt Shovel
+
+item.DiamandRenfored.name=Diamand Renforced
+
+item.IronRenfored.name=Iron Ingot Renforced
+
+item.GoldRenforced.name=Gold Renforced
+
+
+
+potion.PotionTest=Test Potion
+
+item.Stars.name=Stars
+
+entity.GolemStone.name=King Spider
+entity.Robber.name=Robber
+entity.Familiar.name=Familiar
+entity.KingRobber.name=King Skeletons
+entity.Goblin.name=Goblin
+entity.GoblinKing.name=King Goblin
+entity.WolfNether.name=Queen Witch
+entity.KCreeper.name=KCreeper
+entity.KingHeal.name=Ender Titan
+
+entity.EntityCreeperBoss.name=KCreeper Boss
+entity.DragonRed.name=Dragon Red
+
+enchantment.EnchantTest=Poisoork
+enchantment.Slowness=Slowness
+enchantment.StarsPower=Power Ender
+enchantment.FightPower=Power Fight
