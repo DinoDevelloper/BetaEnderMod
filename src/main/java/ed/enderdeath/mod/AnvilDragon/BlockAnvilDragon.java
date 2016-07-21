@@ -11,22 +11,20 @@ import net.minecraft.world.World;
 public class BlockAnvilDragon extends Block
 {
 
-	public BlockAnvilDragon() {
-		super(Material.anvil);
-		this.setBlockTextureName(enderdeath.MODID + ":BlockAnvilDragon");
-		this.setBlockName("BlockAnvilDragon");
-	}
-	
-	@Override
-	  public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int p_149727_6_, float p_149727_7_, float p_149727_8_, float p_149727_9_)
-	{
-		System.out.println("Test onBlockActivated");
-	 if (!world.isRemote)
-	 {
-			System.out.println("je suis dans la condition world.IsRemote");
-	 player.openGui(enderdeath.instance, GuiHandler.guiCraftingTableID, world, x, y, z);
-	 }
-	 return true;
-	}
-	 
+    public BlockAnvilDragon()
+    {
+        super(Material.anvil);
+        this.setBlockTextureName(enderdeath.MODID + ":BlockAnvilDragon");
+        this.setBlockName("BlockAnvilDragon");
+    }
+
+    @Override
+    public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int p_149727_6_, float p_149727_7_, float p_149727_8_, float p_149727_9_)
+    {
+        if(!world.isRemote)
+        {
+            player.openGui(enderdeath.instance, GuiHandler.guiCraftingTableID, world, x, y, z);
+        }
+        return true;
+    }
 }
