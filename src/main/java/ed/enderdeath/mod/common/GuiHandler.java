@@ -15,51 +15,49 @@ import net.minecraft.world.World;
 
 public class GuiHandler implements IGuiHandler
 {
-	  public static final int guiCraftingTableID = 3;
-	  public static final int alloyer = 1;
-	  public static final int baie = 2;
-	    @Override
-	    public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z)
-	    {
-	        TileEntity tile = world.getTileEntity(x, y, z);
-	        if(ID == alloyer)
-	        {
-	            return new ContainerAlloyer((TileEntityAlloyer)tile, player.inventory);
-	        }
-	       
-	          if(ID == baie)
-	            {
-	                return new ContainerMachineTuto((TileEntityMachineTuto)tile, player.inventory);
-	            }
-	   
-	          if(ID == guiCraftingTableID)
-	          {
-	              System.out.println("Test getServerGuiElement");
-	              return new ContainerDragonAnvil(player.inventory, world, x, y, z);
-	          }
-	        return null;
-	    }
-	 
-	    @Override
-	    public Object getClientGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z)
-	    {
-	 
-	        TileEntity tile = world.getTileEntity(x, y, z);
-	        if(ID == alloyer)
-	        {
-	            return new GuiAlloyer((TileEntityAlloyer)tile, player.inventory);
-	        }
-	          if(ID == baie)
-	            {
-	                return new GuiMachineTuto((TileEntityMachineTuto)tile, player.inventory);
-	            }
-	          if(ID == guiCraftingTableID)
-	          {
-	              System.out.println("Test getClientGuiElement");
-	              return new GuiAnvilDragon(player.inventory, world, x,y,z);
-	          }
-	        return null;
-	    }
-	 
+    public static final int guiCraftingTableID = 3;
+    public static final int alloyer = 1;
+    public static final int baie = 2;
+
+    @Override
+    public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z)
+    {
+        TileEntity tile = world.getTileEntity(x, y, z);
+        if(ID == alloyer)
+        {
+            return new ContainerAlloyer((TileEntityAlloyer)tile, player.inventory);
+        }
+
+        if(ID == baie)
+        {
+            return new ContainerMachineTuto((TileEntityMachineTuto)tile, player.inventory);
+        }
+
+        if(ID == guiCraftingTableID)
+        {
+            return new ContainerDragonAnvil(player.inventory, world, x, y, z);
+        }
+        return null;
+    }
+
+    @Override
+    public Object getClientGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z)
+    {
+
+        TileEntity tile = world.getTileEntity(x, y, z);
+        if(ID == alloyer)
+        {
+            return new GuiAlloyer((TileEntityAlloyer)tile, player.inventory);
+        }
+        if(ID == baie)
+        {
+            return new GuiMachineTuto((TileEntityMachineTuto)tile, player.inventory);
+        }
+        if(ID == guiCraftingTableID)
+        {
+            return new GuiAnvilDragon(player.inventory, world, x, y, z);
+        }
+        return null;
+    }
 
 }

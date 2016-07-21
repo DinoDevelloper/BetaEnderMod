@@ -494,9 +494,7 @@ public static Item StickJump;
 
 	public static  OrbGreen OrbGreen;
 
-	public static Block AnvilDragon;
-
-	private BlockAnvilDragon BlockAnvilDragon;
+	public static BlockAnvilDragon BlockAnvilDragon;
 
 	private EntityPlayer player;
 
@@ -1038,11 +1036,8 @@ public static Item StickJump;
 
 
 		BlockAnvilDragon = new BlockAnvilDragon();
-	
-
-		
-
 		GameRegistry.registerBlock(BlockAnvilDragon, "BlockAnvilDragon");
+		
 		GameRegistry.registerTileEntity(TileEntityAlloyer.class, "enderdeath:alloyer");
 		GameRegistry.registerTileEntity(TileEntityMachineTuto.class, "enderdeath:baie");
 		Mega = new MegaSpawner();
