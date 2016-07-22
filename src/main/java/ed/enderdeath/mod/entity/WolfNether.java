@@ -6,7 +6,7 @@ import java.util.UUID;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import ed.enderdeath.mod.common.enderdeath;
+import ed.enderdeath.mod.common.Enderdeath;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.IRangedAttackMob;
@@ -25,7 +25,6 @@ import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntityPotion;
 import net.minecraft.init.Items;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
@@ -33,7 +32,7 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 
-public class WolfNether extends EntityMob implements IRangedAttackMob,IBossDisplayData
+public class WolfNether extends EntityMob implements IRangedAttackMob, IBossDisplayData
 {
     private static final UUID field_110184_bp = UUID.fromString("5CD17E52-A79A-43D3-A529-90FDE04B181E");
     private static final AttributeModifier field_110185_bq = (new AttributeModifier(field_110184_bp, "Drinking speed penalty", -0.35D, 0)).setSaved(false);
@@ -125,25 +124,25 @@ public class WolfNether extends EntityMob implements IRangedAttackMob,IBossDispl
      */
     public void onLivingUpdate()
     {
-        if (!this.worldObj.isRemote)
+        if(!this.worldObj.isRemote)
         {
-            if (this.getAggressive())
+            if(this.getAggressive())
             {
-                if (this.witchAttackTimer-- <= 0)
+                if(this.witchAttackTimer-- <= 0)
                 {
                     this.setAggressive(false);
                     ItemStack itemstack = this.getHeldItem();
                     this.setCurrentItemOrArmor(0, (ItemStack)null);
 
-                    if (itemstack != null && itemstack.getItem() == Items.potionitem)
+                    if(itemstack != null && itemstack.getItem() == Items.potionitem)
                     {
                         List list = Items.potionitem.getEffects(itemstack);
 
-                        if (list != null)
+                        if(list != null)
                         {
                             Iterator iterator = list.iterator();
 
-                            while (iterator.hasNext())
+                            while(iterator.hasNext())
                             {
                                 PotionEffect potioneffect = (PotionEffect)iterator.next();
                                 this.addPotionEffect(new PotionEffect(potioneffect));
@@ -158,28 +157,28 @@ public class WolfNether extends EntityMob implements IRangedAttackMob,IBossDispl
             {
                 short short1 = -1;
 
-                if (this.rand.nextFloat() < 0.15F && this.isInsideOfMaterial(Material.water) && !this.isPotionActive(Potion.waterBreathing))
+                if(this.rand.nextFloat() < 0.15F && this.isInsideOfMaterial(Material.water) && !this.isPotionActive(Potion.waterBreathing))
                 {
                     short1 = 8237;
                 }
-                else if (this.rand.nextFloat() < 0.15F && this.isBurning() && !this.isPotionActive(Potion.fireResistance))
+                else if(this.rand.nextFloat() < 0.15F && this.isBurning() && !this.isPotionActive(Potion.fireResistance))
                 {
                     short1 = 16307;
                 }
-                else if (this.rand.nextFloat() < 0.05F && this.getHealth() < this.getMaxHealth())
+                else if(this.rand.nextFloat() < 0.05F && this.getHealth() < this.getMaxHealth())
                 {
                     short1 = 18341;
                 }
-                else if (this.rand.nextFloat() < 0.25F && this.getAttackTarget() != null && !this.isPotionActive(Potion.moveSpeed) && this.getAttackTarget().getDistanceSqToEntity(this) > 121.0D)
+                else if(this.rand.nextFloat() < 0.25F && this.getAttackTarget() != null && !this.isPotionActive(Potion.moveSpeed) && this.getAttackTarget().getDistanceSqToEntity(this) > 121.0D)
                 {
                     short1 = 17274;
                 }
-                else if (this.rand.nextFloat() < 0.25F && this.getAttackTarget() != null && !this.isPotionActive(Potion.moveSpeed) && this.getAttackTarget().getDistanceSqToEntity(this) > 121.0D)
+                else if(this.rand.nextFloat() < 0.25F && this.getAttackTarget() != null && !this.isPotionActive(Potion.moveSpeed) && this.getAttackTarget().getDistanceSqToEntity(this) > 121.0D)
                 {
                     short1 = 17274;
                 }
 
-                if (short1 > -1)
+                if(short1 > -1)
                 {
                     this.setCurrentItemOrArmor(0, new ItemStack(Items.potionitem, 1, short1));
                     this.witchAttackTimer = this.getHeldItem().getMaxItemUseDuration();
@@ -190,7 +189,7 @@ public class WolfNether extends EntityMob implements IRangedAttackMob,IBossDispl
                 }
             }
 
-            if (this.rand.nextFloat() < 7.5E-4F)
+            if(this.rand.nextFloat() < 7.5E-4F)
             {
                 this.worldObj.setEntityState(this, (byte)15);
             }
@@ -202,9 +201,9 @@ public class WolfNether extends EntityMob implements IRangedAttackMob,IBossDispl
     @SideOnly(Side.CLIENT)
     public void handleHealthUpdate(byte p_70103_1_)
     {
-        if (p_70103_1_ == 15)
+        if(p_70103_1_ == 15)
         {
-            for (int i = 0; i < this.rand.nextInt(35) + 10; ++i)
+            for(int i = 0; i < this.rand.nextInt(35) + 10; ++i)
             {
                 this.worldObj.spawnParticle("witchMagic", this.posX + this.rand.nextGaussian() * 0.12999999523162842D, this.boundingBox.maxY + 0.5D + this.rand.nextGaussian() * 0.12999999523162842D, this.posZ + this.rand.nextGaussian() * 0.12999999523162842D, 0.0D, 0.0D, 0.0D);
             }
@@ -222,12 +221,12 @@ public class WolfNether extends EntityMob implements IRangedAttackMob,IBossDispl
     {
         p_70672_2_ = super.applyPotionDamageCalculations(p_70672_1_, p_70672_2_);
 
-        if (p_70672_1_.getEntity() == this)
+        if(p_70672_1_.getEntity() == this)
         {
             p_70672_2_ = 0.0F;
         }
 
-        if (p_70672_1_.isMagicDamage())
+        if(p_70672_1_.isMagicDamage())
         {
             p_70672_2_ = (float)((double)p_70672_2_ * 0.15D);
         }
@@ -241,13 +240,11 @@ public class WolfNether extends EntityMob implements IRangedAttackMob,IBossDispl
      */
     protected void dropFewItems(boolean p_70628_1_, int p_70628_2_)
     {
-        this.dropItem(enderdeath.StickHeal, 1);
-        this.dropItem(enderdeath.StickSpeed, 1);
-        this.dropItem(enderdeath.SitckJolo, 1);
-        this.dropItem(enderdeath.StickStrenght, 1);
-       
+        this.dropItem(Enderdeath.stickHeal, 1);
+        this.dropItem(Enderdeath.stickSpeed, 1);
+        this.dropItem(Enderdeath.sitckJolo, 1);
+        this.dropItem(Enderdeath.stickStrenght, 1);
 
-        
     }
 
     /**
@@ -255,7 +252,7 @@ public class WolfNether extends EntityMob implements IRangedAttackMob,IBossDispl
      */
     public void attackEntityWithRangedAttack(EntityLivingBase p_82196_1_, float p_82196_2_)
     {
-        if (!this.getAggressive())
+        if(!this.getAggressive())
         {
             EntityPotion entitypotion = new EntityPotion(this.worldObj, this, 32732);
             entitypotion.rotationPitch -= -20.0F;
@@ -264,20 +261,20 @@ public class WolfNether extends EntityMob implements IRangedAttackMob,IBossDispl
             double d2 = p_82196_1_.posZ + p_82196_1_.motionZ - this.posZ;
             float f1 = MathHelper.sqrt_double(d0 * d0 + d2 * d2);
 
-            if (f1 >= 8.0F && !p_82196_1_.isPotionActive(Potion.moveSlowdown))
+            if(f1 >= 8.0F && !p_82196_1_.isPotionActive(Potion.moveSlowdown))
             {
                 entitypotion.setPotionDamage(32698);
             }
-            else if (p_82196_1_.getHealth() >= 8.0F && !p_82196_1_.isPotionActive(Potion.poison))
+            else if(p_82196_1_.getHealth() >= 8.0F && !p_82196_1_.isPotionActive(Potion.poison))
             {
                 entitypotion.setPotionDamage(39780);
             }
-            else if (p_82196_1_.getHealth() >= 9.0F && !p_82196_1_.isPotionActive(Potion.wither))
+            else if(p_82196_1_.getHealth() >= 9.0F && !p_82196_1_.isPotionActive(Potion.wither))
             {
                 entitypotion.setPotionDamage(39780);
-                
+
             }
-            else if (f1 <= 3.0F && !p_82196_1_.isPotionActive(Potion.weakness) && this.rand.nextFloat() < 0.25F)
+            else if(f1 <= 3.0F && !p_82196_1_.isPotionActive(Potion.weakness) && this.rand.nextFloat() < 0.25F)
             {
                 entitypotion.setPotionDamage(36696);
             }

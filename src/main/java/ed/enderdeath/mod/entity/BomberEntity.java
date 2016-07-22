@@ -2,15 +2,12 @@ package ed.enderdeath.mod.entity;
 
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntityThrowable;
-import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.MathHelper;
 import net.minecraft.util.MovingObjectPosition;
-import net.minecraft.world.Explosion;
 import net.minecraft.world.World;
 
 public class BomberEntity extends EntityThrowable implements IGrenade
@@ -37,7 +34,7 @@ public class BomberEntity extends EntityThrowable implements IGrenade
         fuse = 50;
         explosionStrength = 3F;
     }
-    
+
     public BomberEntity(World world, double d, double d1, double d2)
     {
         this(world);
@@ -47,14 +44,14 @@ public class BomberEntity extends EntityThrowable implements IGrenade
     public BomberEntity(World world, EntityLivingBase entityliving)
     {
         this(world);
-        //setAngles(entityliving.rotationYaw, 0.0F);
+        // setAngles(entityliving.rotationYaw, 0.0F);
         double d = -MathHelper.sin((entityliving.rotationYaw * (float)Math.PI) / 180F);
         double d1 = MathHelper.cos((entityliving.rotationYaw * (float)Math.PI) / 180F);
         motionX = initialVelocity * d * (double)MathHelper.cos((entityliving.rotationPitch / 180F) * (float)Math.PI);
         motionY = -initialVelocity * (double)MathHelper.sin((entityliving.rotationPitch / 180F) * (float)Math.PI);
         motionZ = initialVelocity * d1 * (double)MathHelper.cos((entityliving.rotationPitch / 180F) * (float)Math.PI);
 
-        if (entityliving.ridingEntity != null && (entityliving.ridingEntity instanceof EntityLiving))
+        if(entityliving.ridingEntity != null && (entityliving.ridingEntity instanceof EntityLiving))
         {
             entityliving = (EntityLiving)entityliving.ridingEntity;
         }
@@ -67,10 +64,12 @@ public class BomberEntity extends EntityThrowable implements IGrenade
         prevPosY = posY;
         prevPosZ = posZ;
     }
+
     public boolean isInRangeToRenderDist(double d)
     {
         return true;
     }
+
     public void onUpdate()
     {
         double d = motionX;
@@ -82,43 +81,43 @@ public class BomberEntity extends EntityThrowable implements IGrenade
         moveEntity(motionX, motionY, motionZ);
         boolean flag = false;
 
-        if (motionX == 0.0D && d != 0.0D)
+        if(motionX == 0.0D && d != 0.0D)
         {
             motionX = -bounceFactor * d;
             motionY = bounceSlowFactor * d1;
             motionZ = bounceSlowFactor * d2;
 
-            if (Math.abs(d) > 0.1D)
+            if(Math.abs(d) > 0.1D)
             {
                 flag = true;
             }
         }
 
-        if (motionY == 0.0D && d1 != 0.0D)
+        if(motionY == 0.0D && d1 != 0.0D)
         {
             motionX = bounceSlowFactor * d;
             motionY = -bounceFactor * d1;
             motionZ = bounceSlowFactor * d2;
 
-            if (Math.abs(d1) > 0.1D)
+            if(Math.abs(d1) > 0.1D)
             {
                 flag = true;
             }
         }
 
-        if (motionZ == 0.0D && d2 != 0.0D)
+        if(motionZ == 0.0D && d2 != 0.0D)
         {
             motionX = bounceSlowFactor * d;
             motionY = bounceSlowFactor * d1;
             motionZ = -bounceFactor * d2;
 
-            if (Math.abs(d2) > 0.1D)
+            if(Math.abs(d2) > 0.1D)
             {
                 flag = true;
             }
         }
 
-        if (flag)
+        if(flag)
         {
             handleBounce();
         }
@@ -137,27 +136,29 @@ public class BomberEntity extends EntityThrowable implements IGrenade
 
     protected void handleExplode()
     {
-        if (fuse-- <= 0)
+        if(fuse-- <= 0)
         {
             explode();
         }
     }
+
     protected void explode()
     {
-        if (!exploded)
+        if(!exploded)
         {
             exploded = true;
             if(!worldObj.isRemote)
-            	worldObj.createExplosion(this, posX, posY, posZ, explosionStrength, false);
+                worldObj.createExplosion(this, posX, posY, posZ, explosionStrength, false);
 
-            for (int i = 0; i < 32; i++)
+            for(int i = 0; i < 32; i++)
             {
-                
+
             }
 
             isDead = true;
         }
     }
+
     public boolean canBeCollidedWith()
     {
         return true;
@@ -167,7 +168,7 @@ public class BomberEntity extends EntityThrowable implements IGrenade
     {
         return false;
     }
-    
+
     public void writeEntityToNBT(NBTTagCompound nbttagcompound)
     {
         super.writeEntityToNBT(nbttagcompound);
@@ -184,23 +185,24 @@ public class BomberEntity extends EntityThrowable implements IGrenade
     }
 
     public void onCollideWithPlayer(EntityPlayer entityplayer)
-    {
-    }
+    {}
 
     public float getEyeHeight()
     {
         return height;
     }
 
-	@Override
-	protected void onImpact(MovingObjectPosition p_70184_1_) {
-		// TODO Auto-generated method stub
-		
-	}
+    @Override
+    protected void onImpact(MovingObjectPosition p_70184_1_)
+    {
+        // TODO Auto-generated method stub
 
-	@Override
-	public EnumGrenadeType getGrenadeType() {
-		// TODO Auto-generated method stub
-		return EnumGrenadeType.FRAG;
-	}
+    }
+
+    @Override
+    public EnumGrenadeType getGrenadeType()
+    {
+        // TODO Auto-generated method stub
+        return EnumGrenadeType.FRAG;
+    }
 }

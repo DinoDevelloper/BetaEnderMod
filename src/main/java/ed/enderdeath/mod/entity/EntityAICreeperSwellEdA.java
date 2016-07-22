@@ -2,7 +2,6 @@ package ed.enderdeath.mod.entity;
 
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.ai.EntityAIBase;
-import net.minecraft.entity.monster.EntityCreeper;
 
 public class EntityAICreeperSwellEdA extends EntityAIBase
 {
@@ -49,15 +48,15 @@ public class EntityAICreeperSwellEdA extends EntityAIBase
      */
     public void updateTask()
     {
-        if (this.creeperAttackTarget == null)
+        if(this.creeperAttackTarget == null)
         {
             this.swellingCreeper.setCreeperState(-1);
         }
-        else if (this.swellingCreeper.getDistanceSqToEntity(this.creeperAttackTarget) > 49.0D)
+        else if(this.swellingCreeper.getDistanceSqToEntity(this.creeperAttackTarget) > 49.0D)
         {
             this.swellingCreeper.setCreeperState(-1);
         }
-        else if (!this.swellingCreeper.getEntitySenses().canSee(this.creeperAttackTarget))
+        else if(!this.swellingCreeper.getEntitySenses().canSee(this.creeperAttackTarget))
         {
             this.swellingCreeper.setCreeperState(-1);
         }

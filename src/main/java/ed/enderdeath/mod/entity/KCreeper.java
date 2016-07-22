@@ -2,12 +2,11 @@ package ed.enderdeath.mod.entity;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import ed.enderdeath.mod.common.enderdeath;
+import ed.enderdeath.mod.common.Enderdeath;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAIAttackOnCollide;
 import net.minecraft.entity.ai.EntityAIAvoidEntity;
-import net.minecraft.entity.ai.EntityAICreeperSwell;
 import net.minecraft.entity.ai.EntityAIHurtByTarget;
 import net.minecraft.entity.ai.EntityAILookIdle;
 import net.minecraft.entity.ai.EntityAINearestAttackableTarget;
@@ -16,14 +15,12 @@ import net.minecraft.entity.ai.EntityAIWander;
 import net.minecraft.entity.ai.EntityAIWatchClosest;
 import net.minecraft.entity.effect.EntityLightningBolt;
 import net.minecraft.entity.monster.EntityMob;
-import net.minecraft.entity.monster.EntitySkeleton;
 import net.minecraft.entity.passive.EntityOcelot;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
 
 public class KCreeper extends EntityMob
@@ -57,7 +54,7 @@ public class KCreeper extends EntityMob
     protected void applyEntityAttributes()
     {
         super.applyEntityAttributes();
-     
+
         this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(15D);
         this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.3D);
     }
@@ -73,7 +70,7 @@ public class KCreeper extends EntityMob
     /**
      * The number of iterations PathFinder.getSafePoint will execute before giving up.
      */
-    
+
     /**
      * Called when the mob is falling. Calculates and applies fall damage.
      */
@@ -82,7 +79,7 @@ public class KCreeper extends EntityMob
         super.fall(p_70069_1_);
         this.timeSinceIgnited = (int)((float)this.timeSinceIgnited + p_70069_1_ * 1.5F);
 
-        if (this.timeSinceIgnited > this.fuseTime - 5)
+        if(this.timeSinceIgnited > this.fuseTime - 5)
         {
             this.timeSinceIgnited = this.fuseTime - 5;
         }
@@ -91,7 +88,7 @@ public class KCreeper extends EntityMob
     protected void entityInit()
     {
         super.entityInit();
-        this.dataWatcher.addObject(16, Byte.valueOf((byte) - 1));
+        this.dataWatcher.addObject(16, Byte.valueOf((byte)-1));
         this.dataWatcher.addObject(17, Byte.valueOf((byte)0));
         this.dataWatcher.addObject(18, Byte.valueOf((byte)0));
     }
@@ -103,7 +100,7 @@ public class KCreeper extends EntityMob
     {
         super.writeEntityToNBT(p_70014_1_);
 
-        if (this.dataWatcher.getWatchableObjectByte(17) == 1)
+        if(this.dataWatcher.getWatchableObjectByte(17) == 1)
         {
             p_70014_1_.setBoolean("powered", true);
         }
@@ -121,17 +118,17 @@ public class KCreeper extends EntityMob
         super.readEntityFromNBT(p_70037_1_);
         this.dataWatcher.updateObject(17, Byte.valueOf((byte)(p_70037_1_.getBoolean("powered") ? 1 : 0)));
 
-        if (p_70037_1_.hasKey("Fuse", 99))
+        if(p_70037_1_.hasKey("Fuse", 99))
         {
             this.fuseTime = p_70037_1_.getShort("Fuse");
         }
 
-        if (p_70037_1_.hasKey("ExplosionRadius", 99))
+        if(p_70037_1_.hasKey("ExplosionRadius", 99))
         {
             this.explosionRadius = p_70037_1_.getByte("ExplosionRadius");
         }
 
-        if (p_70037_1_.getBoolean("ignited"))
+        if(p_70037_1_.getBoolean("ignited"))
         {
             this.func_146079_cb();
         }
@@ -142,30 +139,30 @@ public class KCreeper extends EntityMob
      */
     public void onUpdate()
     {
-        if (this.isEntityAlive())
+        if(this.isEntityAlive())
         {
             this.lastActiveTime = this.timeSinceIgnited;
 
-            if (this.func_146078_ca())
+            if(this.func_146078_ca())
             {
                 this.setCreeperState(1);
             }
 
             int i = this.getCreeperState();
 
-            if (i > 0 && this.timeSinceIgnited == 0)
+            if(i > 0 && this.timeSinceIgnited == 0)
             {
                 this.playSound("creeper.primed", 1.0F, 0.5F);
             }
 
             this.timeSinceIgnited += i;
 
-            if (this.timeSinceIgnited < 0)
+            if(this.timeSinceIgnited < 0)
             {
                 this.timeSinceIgnited = 0;
             }
 
-            if (this.timeSinceIgnited >= this.fuseTime)
+            if(this.timeSinceIgnited >= this.fuseTime)
             {
                 this.timeSinceIgnited = this.fuseTime;
                 this.func_146077_cc();
@@ -194,7 +191,7 @@ public class KCreeper extends EntityMob
     /**
      * Called when the mob's health reaches 0.
      */
-    
+
     public int getMaxSafePointTries()
     {
         return this.getAttackTarget() == null ? 3 : 3 + (int)(this.getHealth() - 20.0F);
@@ -224,7 +221,7 @@ public class KCreeper extends EntityMob
 
     protected Item getDropItem()
     {
-        return enderdeath.Bomber;
+        return Enderdeath.bomber;
     }
 
     /**
@@ -259,12 +256,12 @@ public class KCreeper extends EntityMob
     {
         ItemStack itemstack = p_70085_1_.inventory.getCurrentItem();
 
-        if (itemstack != null && itemstack.getItem() == Items.flint_and_steel)
+        if(itemstack != null && itemstack.getItem() == Items.flint_and_steel)
         {
             this.worldObj.playSoundEffect(this.posX + 0.5D, this.posY + 0.5D, this.posZ + 0.5D, "fire.ignite", 1.0F, this.rand.nextFloat() * 0.4F + 0.8F);
             p_70085_1_.swingItem();
 
-            if (!this.worldObj.isRemote)
+            if(!this.worldObj.isRemote)
             {
                 this.func_146079_cb();
                 itemstack.damageItem(1, p_70085_1_);
@@ -277,11 +274,11 @@ public class KCreeper extends EntityMob
 
     private void func_146077_cc()
     {
-        if (!this.worldObj.isRemote)
+        if(!this.worldObj.isRemote)
         {
             boolean flag = this.worldObj.getGameRules().getGameRuleBooleanValue("mobGriefing");
 
-            if (this.getPowered())
+            if(this.getPowered())
             {
                 this.worldObj.createExplosion(this, this.posX, this.posY, this.posZ, (float)(this.explosionRadius * 2), flag);
             }
@@ -290,7 +287,6 @@ public class KCreeper extends EntityMob
                 this.worldObj.createExplosion(this, this.posX, this.posY, this.posZ, (float)this.explosionRadius, flag);
             }
 
-           
         }
     }
 
