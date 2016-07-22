@@ -2,13 +2,11 @@ package ed.enderdeath.mod.entity;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import ed.enderdeath.mod.Block.EggDragonRed;
-import ed.enderdeath.mod.common.enderdeath;
+import ed.enderdeath.mod.common.Enderdeath;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAIAttackOnCollide;
 import net.minecraft.entity.ai.EntityAIAvoidEntity;
-import net.minecraft.entity.ai.EntityAICreeperSwell;
 import net.minecraft.entity.ai.EntityAIHurtByTarget;
 import net.minecraft.entity.ai.EntityAILookIdle;
 import net.minecraft.entity.ai.EntityAINearestAttackableTarget;
@@ -18,19 +16,15 @@ import net.minecraft.entity.ai.EntityAIWatchClosest;
 import net.minecraft.entity.boss.IBossDisplayData;
 import net.minecraft.entity.effect.EntityLightningBolt;
 import net.minecraft.entity.monster.EntityMob;
-import net.minecraft.entity.monster.EntitySkeleton;
 import net.minecraft.entity.passive.EntityOcelot;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
 
 public class EntityCreeperBoss extends EntityMob implements IBossDisplayData
 {
-	
+
     /**
      * Time when this creeper was last in an active state (Messed up code here, probably causes creeper animation to go
      * weird)
@@ -41,7 +35,7 @@ public class EntityCreeperBoss extends EntityMob implements IBossDisplayData
     private int fuseTime = 1;
     /** Explosion radius for this creeper. */
     private int explosionRadius = 3;
-	private float maximumHomeDistance;
+    private float maximumHomeDistance;
     private static final String __OBFID = "CL_00001684";
 
     public EntityCreeperBoss(World p_i1733_1_)
@@ -57,7 +51,7 @@ public class EntityCreeperBoss extends EntityMob implements IBossDisplayData
         this.targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityPlayer.class, 0, true));
         this.targetTasks.addTask(2, new EntityAIHurtByTarget(this, false));
     }
-   
+
     protected void applyEntityAttributes()
     {
         super.applyEntityAttributes();
@@ -89,7 +83,7 @@ public class EntityCreeperBoss extends EntityMob implements IBossDisplayData
         super.fall(p_70069_1_);
         this.timeSinceIgnited = (int)((float)this.timeSinceIgnited + p_70069_1_ * 1.5F);
 
-        if (this.timeSinceIgnited > this.fuseTime - 5)
+        if(this.timeSinceIgnited > this.fuseTime - 5)
         {
             this.timeSinceIgnited = this.fuseTime - 5;
         }
@@ -98,7 +92,7 @@ public class EntityCreeperBoss extends EntityMob implements IBossDisplayData
     protected void entityInit()
     {
         super.entityInit();
-        this.dataWatcher.addObject(16, Byte.valueOf((byte) - 1));
+        this.dataWatcher.addObject(16, Byte.valueOf((byte)-1));
         this.dataWatcher.addObject(17, Byte.valueOf((byte)0));
         this.dataWatcher.addObject(18, Byte.valueOf((byte)0));
     }
@@ -110,7 +104,7 @@ public class EntityCreeperBoss extends EntityMob implements IBossDisplayData
     {
         super.writeEntityToNBT(p_70014_1_);
 
-        if (this.dataWatcher.getWatchableObjectByte(17) == 1)
+        if(this.dataWatcher.getWatchableObjectByte(17) == 1)
         {
             p_70014_1_.setBoolean("powered", true);
         }
@@ -128,17 +122,17 @@ public class EntityCreeperBoss extends EntityMob implements IBossDisplayData
         super.readEntityFromNBT(p_70037_1_);
         this.dataWatcher.updateObject(17, Byte.valueOf((byte)(p_70037_1_.getBoolean("powered") ? 1 : 0)));
 
-        if (p_70037_1_.hasKey("Fuse", 99))
+        if(p_70037_1_.hasKey("Fuse", 99))
         {
             this.fuseTime = p_70037_1_.getShort("Fuse");
         }
 
-        if (p_70037_1_.hasKey("ExplosionRadius", 99))
+        if(p_70037_1_.hasKey("ExplosionRadius", 99))
         {
             this.explosionRadius = p_70037_1_.getByte("ExplosionRadius");
         }
 
-        if (p_70037_1_.getBoolean("ignited"))
+        if(p_70037_1_.getBoolean("ignited"))
         {
             this.func_146079_cb();
         }
@@ -149,30 +143,30 @@ public class EntityCreeperBoss extends EntityMob implements IBossDisplayData
      */
     public void onUpdate()
     {
-        if (this.isEntityAlive())
+        if(this.isEntityAlive())
         {
             this.lastActiveTime = this.timeSinceIgnited;
 
-            if (this.func_146078_ca())
+            if(this.func_146078_ca())
             {
                 this.setCreeperState(1);
             }
 
             int i = this.getCreeperState();
 
-            if (i > 0 && this.timeSinceIgnited == 0)
+            if(i > 0 && this.timeSinceIgnited == 0)
             {
                 this.playSound("creeper.primed", 1.0F, 0.5F);
             }
 
             this.timeSinceIgnited += i;
 
-            if (this.timeSinceIgnited < 0)
+            if(this.timeSinceIgnited < 0)
             {
                 this.timeSinceIgnited = 0;
             }
 
-            if (this.timeSinceIgnited >= this.fuseTime)
+            if(this.timeSinceIgnited >= this.fuseTime)
             {
                 this.timeSinceIgnited = this.fuseTime;
                 this.func_146077_cc();
@@ -201,7 +195,6 @@ public class EntityCreeperBoss extends EntityMob implements IBossDisplayData
     /**
      * Called when the mob's health reaches 0.
      */
-  
 
     public boolean attackEntityAsMob(Entity p_70652_1_)
     {
@@ -227,15 +220,16 @@ public class EntityCreeperBoss extends EntityMob implements IBossDisplayData
 
     public void dropFewItems(boolean b, int looting)
     {
-        this.dropItem(enderdeath.Wand, 1);
-        this.dropItem(enderdeath.Rubis, 32);
-        this.dropItem(enderdeath.Saphir, 16);
-        this.dropItem(enderdeath.Royalite, 8);
-        this.dropItem(enderdeath.Darkanite, 4);
-        this.dropItem(enderdeath.NuggetEnderite, 4);
-        this.dropItem(enderdeath.NuggetEnderite, 4);
+        this.dropItem(Enderdeath.wand, 1);
+        this.dropItem(Enderdeath.rubis, 32);
+        this.dropItem(Enderdeath.saphir, 16);
+        this.dropItem(Enderdeath.royalite, 8);
+        this.dropItem(Enderdeath.darkanite, 4);
+        this.dropItem(Enderdeath.nuggetEnderite, 4);
+        this.dropItem(Enderdeath.nuggetEnderite, 4);
         this.dropItem(Items.nether_star, 5);
     }
+
     /**
      * Returns the current state of creeper, -1 is idle, 1 is 'in fuse'
      */
@@ -265,14 +259,13 @@ public class EntityCreeperBoss extends EntityMob implements IBossDisplayData
      * Called when a player interacts with a mob. e.g. gets milk from a cow, gets into the saddle on a pig.
      */
 
-
     private void func_146077_cc()
     {
-        if (!this.worldObj.isRemote)
+        if(!this.worldObj.isRemote)
         {
             boolean flag = this.worldObj.getGameRules().getGameRuleBooleanValue("mobGriefing");
 
-            if (this.getPowered())
+            if(this.getPowered())
             {
                 this.worldObj.createExplosion(this, this.posX, this.posY, this.posZ, (float)(this.explosionRadius * 2), flag);
             }
@@ -281,11 +274,10 @@ public class EntityCreeperBoss extends EntityMob implements IBossDisplayData
                 this.worldObj.createExplosion(this, this.posX, this.posY, this.posZ, (float)this.explosionRadius, flag);
             }
 
-           
         }
     }
- 
-	public boolean func_146078_ca()
+
+    public boolean func_146078_ca()
     {
         return this.dataWatcher.getWatchableObjectByte(18) != 0;
     }

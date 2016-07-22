@@ -13,8 +13,8 @@ import org.lwjgl.input.Cursor;
 import org.lwjgl.input.Mouse;
 
 import cpw.mods.fml.client.registry.RenderingRegistry;
-import ed.enderdeath.mod.Armor.ModelTFKnightlyArmor;
-import ed.enderdeath.mod.common.enderdeath;
+import ed.enderdeath.mod.armor.ModelTFKnightlyArmor;
+import ed.enderdeath.mod.common.Enderdeath;
 import ed.enderdeath.mod.entity.BomberEntity;
 import ed.enderdeath.mod.entity.Boss;
 import ed.enderdeath.mod.entity.DragonRed;
@@ -48,80 +48,78 @@ import net.minecraft.client.model.ModelWitch;
 import net.minecraft.client.model.ModelZombie;
 import net.minecraft.client.renderer.entity.RenderSnowball;
 
-public class ClientProxy extends CommonProxy {
-	ModelBiped[] knightlyArmorModel;
+public class ClientProxy extends CommonProxy
+{
+    ModelBiped[] knightlyArmorModel;
 
-	@Override
-	public void registerRender() {
-		System.out.println("client");
-		
-		this.setCursor("enderdeath", "/textures/items/ADarkaniteSword.png", 16, 16, 3.1415926536);
+    @Override
+    public void registerRender()
+    {
+        System.out.println("client");
 
-		
-		
+        this.setCursor("enderdeath", "/textures/items/ADarkaniteSword.png", 16, 16, 3.1415926536);
 
+        RenderingRegistry.registerEntityRenderingHandler(KingHeal.class, new RenderKing(new ModelEnderman(), 0.5F));
 
+        RenderingRegistry.registerEntityRenderingHandler(KCreeper.class, new RenderKCreeper(new ModelCreeper(), 0.5F));
 
-		RenderingRegistry.registerEntityRenderingHandler(KingHeal.class, new RenderKing(new ModelEnderman(), 0.5F));
+        RenderingRegistry.registerEntityRenderingHandler(EntityCreeperBoss.class, new RenderCreeperBoss(new ModelCreeper(), 0.5F));
 
-		RenderingRegistry.registerEntityRenderingHandler(KCreeper.class, new RenderKCreeper(new ModelCreeper(), 0.5F));
-		
-		RenderingRegistry.registerEntityRenderingHandler(EntityCreeperBoss.class, new RenderCreeperBoss(new ModelCreeper(), 0.5F));
-		
-		knightlyArmorModel = new ModelBiped[4];
-		knightlyArmorModel[0] = new ModelTFKnightlyArmor(0, 0.5F);
-		RenderingRegistry.registerEntityRenderingHandler(Goblin.class, new RenderGoblin(new ModelZombie(), 0.5F));
+        knightlyArmorModel = new ModelBiped[4];
+        knightlyArmorModel[0] = new ModelTFKnightlyArmor(0, 0.5F);
+        RenderingRegistry.registerEntityRenderingHandler(Goblin.class, new RenderGoblin(new ModelZombie(), 0.5F));
 
-		RenderingRegistry.registerEntityRenderingHandler(EntityBoatTnT.class, new RenderBoaTnT());
+        RenderingRegistry.registerEntityRenderingHandler(EntityBoatTnT.class, new RenderBoaTnT());
 
-		RenderingRegistry.registerEntityRenderingHandler(Familiar.class, new RenderFamiliar(new ModelH(), 0.5F));
-		
-		RenderingRegistry.registerEntityRenderingHandler(DragonRed.class, new RenderDragonRed(new ModelDragonLeo(), 0.5F));
-		
-		RenderingRegistry.registerEntityRenderingHandler(Boss.class, new RenderBoss(new ModelBoss(), 0.5F));
+        RenderingRegistry.registerEntityRenderingHandler(Familiar.class, new RenderFamiliar(new ModelH(), 0.5F));
 
-		RenderingRegistry.registerEntityRenderingHandler(WolfNether.class,
-				new RenderWolfNether(new ModelWitch(0), 0.5F));
+        RenderingRegistry.registerEntityRenderingHandler(DragonRed.class, new RenderDragonRed(new ModelDragonLeo(), 0.5F));
 
-		RenderingRegistry.registerEntityRenderingHandler(GoblinKing.class,
-				new RenderKinggolbin(new ModelZombie(), 0.5F));
+        RenderingRegistry.registerEntityRenderingHandler(Boss.class, new RenderBoss(new ModelBoss(), 0.5F));
 
-		
-		
-		RenderingRegistry.registerEntityRenderingHandler(BomberEntity.class, new RenderSnowball(enderdeath.Bomber));
+        RenderingRegistry.registerEntityRenderingHandler(WolfNether.class, new RenderWolfNether(new ModelWitch(0), 0.5F));
 
-		RenderingRegistry.registerEntityRenderingHandler(EntityArrowDeath.class, new RenderArrowD());
-	}
+        RenderingRegistry.registerEntityRenderingHandler(GoblinKing.class, new RenderKinggolbin(new ModelZombie(), 0.5F));
 
-	private void setCursor(String modid, String path, int width, int height, double rotation) {
-		AffineTransform transform = new AffineTransform();
+        RenderingRegistry.registerEntityRenderingHandler(BomberEntity.class, new RenderSnowball(Enderdeath.bomber));
 
-		try {
-			BufferedImage cursorTexture = ImageIO.read(getClass().getResource("/assets/" + modid + path));
-			transform.rotate(rotation, cursorTexture.getWidth() / 2, cursorTexture.getHeight() / 2);
+        RenderingRegistry.registerEntityRenderingHandler(EntityArrowDeath.class, new RenderArrowD());
+    }
 
-			AffineTransformOp op = new AffineTransformOp(transform, AffineTransformOp.TYPE_BILINEAR);
-			cursorTexture = op.filter(cursorTexture, null);
+    private void setCursor(String modid, String path, int width, int height, double rotation)
+    {
+        AffineTransform transform = new AffineTransform();
 
-			int[] rgbs = new int[cursorTexture.getWidth() * cursorTexture.getHeight()];
+        try
+        {
+            BufferedImage cursorTexture = ImageIO.read(getClass().getResource("/assets/" + modid + path));
+            transform.rotate(rotation, cursorTexture.getWidth() / 2, cursorTexture.getHeight() / 2);
 
-			IntBuffer buffer = IntBuffer.wrap(cursorTexture.getRGB(0, 0, cursorTexture.getWidth(),
-					cursorTexture.getHeight(), rgbs, 0, cursorTexture.getHeight()));
+            AffineTransformOp op = new AffineTransformOp(transform, AffineTransformOp.TYPE_BILINEAR);
+            cursorTexture = op.filter(cursorTexture, null);
 
-			buffer.rewind();
+            int[] rgbs = new int[cursorTexture.getWidth() * cursorTexture.getHeight()];
 
-			Cursor newCursor = new Cursor(width, height, 1, cursorTexture.getHeight() - 1, 1, buffer, null);
-			Mouse.setNativeCursor(newCursor);
-		} catch (LWJGLException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
+            IntBuffer buffer = IntBuffer.wrap(cursorTexture.getRGB(0, 0, cursorTexture.getWidth(), cursorTexture.getHeight(), rgbs, 0, cursorTexture.getHeight()));
 
-	public ModelBiped getKnightlyArmorModel(int armorSlot) {
-		return knightlyArmorModel[armorSlot];
-	}
-	
+            buffer.rewind();
+
+            Cursor newCursor = new Cursor(width, height, 1, cursorTexture.getHeight() - 1, 1, buffer, null);
+            Mouse.setNativeCursor(newCursor);
+        }
+        catch(LWJGLException e)
+        {
+            e.printStackTrace();
+        }
+        catch(IOException e)
+        {
+            e.printStackTrace();
+        }
+    }
+
+    public ModelBiped getKnightlyArmorModel(int armorSlot)
+    {
+        return knightlyArmorModel[armorSlot];
+    }
 
 }

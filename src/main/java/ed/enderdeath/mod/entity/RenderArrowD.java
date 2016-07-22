@@ -1,5 +1,8 @@
 package ed.enderdeath.mod.entity;
 
+import org.lwjgl.opengl.GL11;
+import org.lwjgl.opengl.GL12;
+
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.renderer.Tessellator;
@@ -7,14 +10,13 @@ import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.MathHelper;
 import net.minecraft.util.ResourceLocation;
-import org.lwjgl.opengl.GL11;
-import org.lwjgl.opengl.GL12;
 
 @SideOnly(Side.CLIENT)
 public class RenderArrowD extends Render
 {
-    private static final ResourceLocation arrowTextures = new ResourceLocation("enderdeath","textures/entity/arrow.png");
+    private static final ResourceLocation arrowTextures = new ResourceLocation("enderdeath", "textures/entity/arrow.png");
     private static final String __OBFID = "CL_00000978";
+
     /**
      * Actually renders the given argument. This is a synthetic bridge method, always casting down its argument and then
      * handing it off to a worker function which does the actual work. In all probabilty, the class Render is generic
@@ -42,7 +44,7 @@ public class RenderArrowD extends Render
         GL11.glEnable(GL12.GL_RESCALE_NORMAL);
         float f11 = (float)p_76986_1_.arrowShake - p_76986_9_;
 
-        if (f11 > 0.0F)
+        if(f11 > 0.0F)
         {
             float f12 = -MathHelper.sin(f11 * 3.0F) * f11;
             GL11.glRotatef(f12, 0.0F, 0.0F, 1.0F);
@@ -66,7 +68,7 @@ public class RenderArrowD extends Render
         tessellator.addVertexWithUV(-7.0D, -2.0D, -2.0D, (double)f6, (double)f9);
         tessellator.draw();
 
-        for (int i = 0; i < 4; ++i)
+        for(int i = 0; i < 4; ++i)
         {
             GL11.glRotatef(90.0F, 1.0F, 0.0F, 0.0F);
             GL11.glNormal3f(0.0F, 0.0F, f10);

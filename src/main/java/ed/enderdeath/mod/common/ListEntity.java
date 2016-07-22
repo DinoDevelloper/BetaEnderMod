@@ -96,12 +96,13 @@ public class ListEntity extends EntityList
      */
     public static void addMapping(Class p_75618_0_, String p_75618_1_, int p_75618_2_)
     {
-        if (p_75618_2_ < 0 || p_75618_2_ > 255) throw new IllegalArgumentException("Attempted to register a entity with invalid ID: " + p_75618_2_ + " Name: " + p_75618_1_ + " Class: " + p_75618_0_);
-        if (stringToClassMapping.containsKey(p_75618_1_))
+        if(p_75618_2_ < 0 || p_75618_2_ > 255)
+            throw new IllegalArgumentException("Attempted to register a entity with invalid ID: " + p_75618_2_ + " Name: " + p_75618_1_ + " Class: " + p_75618_0_);
+        if(stringToClassMapping.containsKey(p_75618_1_))
         {
             throw new IllegalArgumentException("ID is already registered: " + p_75618_1_);
         }
-        else if (IDtoClassMapping.containsKey(Integer.valueOf(p_75618_2_)))
+        else if(IDtoClassMapping.containsKey(Integer.valueOf(p_75618_2_)))
         {
             throw new IllegalArgumentException("ID is already registered: " + p_75618_2_);
         }
@@ -135,12 +136,12 @@ public class ListEntity extends EntityList
         {
             Class oclass = (Class)stringToClassMapping.get(p_75620_0_);
 
-            if (oclass != null)
+            if(oclass != null)
             {
                 entity = (Entity)oclass.getConstructor(new Class[] {World.class}).newInstance(new Object[] {p_75620_1_});
             }
         }
-        catch (Exception exception)
+        catch(Exception exception)
         {
             exception.printStackTrace();
         }
@@ -155,9 +156,9 @@ public class ListEntity extends EntityList
     {
         Entity entity = null;
 
-        if ("Minecart".equals(p_75615_0_.getString("id")))
+        if("Minecart".equals(p_75615_0_.getString("id")))
         {
-            switch (p_75615_0_.getInteger("Type"))
+            switch(p_75615_0_.getInteger("Type"))
             {
                 case 0:
                     p_75615_0_.setString("id", "MinecartRideable");
@@ -177,27 +178,25 @@ public class ListEntity extends EntityList
         {
             oclass = (Class)stringToClassMapping.get(p_75615_0_.getString("id"));
 
-            if (oclass != null)
+            if(oclass != null)
             {
                 entity = (Entity)oclass.getConstructor(new Class[] {World.class}).newInstance(new Object[] {p_75615_1_});
             }
         }
-        catch (Exception exception)
+        catch(Exception exception)
         {
             exception.printStackTrace();
         }
 
-        if (entity != null)
+        if(entity != null)
         {
             try
             {
                 entity.readFromNBT(p_75615_0_);
             }
-            catch (Exception e)
+            catch(Exception e)
             {
-                FMLLog.log(Level.ERROR, e,
-                        "An Entity %s(%s) has thrown an exception during loading, its state cannot be restored. Report this to the mod author",
-                        p_75615_0_.getString("id"), oclass.getName());
+                FMLLog.log(Level.ERROR, e, "An Entity %s(%s) has thrown an exception during loading, its state cannot be restored. Report this to the mod author", p_75615_0_.getString("id"), oclass.getName());
                 entity = null;
             }
         }
@@ -220,17 +219,17 @@ public class ListEntity extends EntityList
         {
             Class oclass = getClassFromID(p_75616_0_);
 
-            if (oclass != null)
+            if(oclass != null)
             {
                 entity = (Entity)oclass.getConstructor(new Class[] {World.class}).newInstance(new Object[] {p_75616_1_});
             }
         }
-        catch (Exception exception)
+        catch(Exception exception)
         {
             exception.printStackTrace();
         }
 
-        if (entity == null)
+        if(entity == null)
         {
             logger.warn("Skipping Entity with id " + p_75616_0_);
         }
@@ -272,7 +271,8 @@ public class ListEntity extends EntityList
         return oclass != null ? (String)classToStringMapping.get(oclass) : null;
     }
 
-    public static void func_151514_a() {}
+    public static void func_151514_a()
+    {}
 
     public static Set func_151515_b()
     {
@@ -338,29 +338,29 @@ public class ListEntity extends EntityList
         addMapping(EntityHorse.class, "EntityHorse", 100, 12623485, 15656192);
         addMapping(EntityVillager.class, "Villager", 120, 5651507, 12422002);
         addMapping(EntityEnderCrystal.class, "EnderCrystal", 200);
-        
+
         addMapping(Goblin.class, "Goblin", 424);
     }
 
     public static class EntityEggInfo
-        {
-            /** The entityID of the spawned mob */
-            public final int spawnedID;
-            /** Base color of the egg */
-            public final int primaryColor;
-            /** Color of the egg spots */
-            public final int secondaryColor;
-            public final ListEntity field_151512_d;
-            public final ListEntity field_151513_e;
-            private static final String __OBFID = "CL_00001539";
+    {
+        /** The entityID of the spawned mob */
+        public final int spawnedID;
+        /** Base color of the egg */
+        public final int primaryColor;
+        /** Color of the egg spots */
+        public final int secondaryColor;
+        public final ListEntity field_151512_d;
+        public final ListEntity field_151513_e;
+        private static final String __OBFID = "CL_00001539";
 
-            public EntityEggInfo(int p_i1583_1_, int p_i1583_2_, int p_i1583_3_)
-            {
-                this.spawnedID = p_i1583_1_;
-                this.primaryColor = p_i1583_2_;
-                this.secondaryColor = p_i1583_3_;
-                this.field_151512_d = new ListEntity();
-                this.field_151513_e = new ListEntity();
-            }
+        public EntityEggInfo(int p_i1583_1_, int p_i1583_2_, int p_i1583_3_)
+        {
+            this.spawnedID = p_i1583_1_;
+            this.primaryColor = p_i1583_2_;
+            this.secondaryColor = p_i1583_3_;
+            this.field_151512_d = new ListEntity();
+            this.field_151513_e = new ListEntity();
         }
+    }
 }

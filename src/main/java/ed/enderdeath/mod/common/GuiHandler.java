@@ -1,14 +1,14 @@
 package ed.enderdeath.mod.common;
 
 import cpw.mods.fml.common.network.IGuiHandler;
-import ed.enderdeath.mod.AnvilDragon.ContainerDragonAnvil;
-import ed.enderdeath.mod.AnvilDragon.GuiAnvilDragon;
-import ed.enderdeath.mod.BaieMachine.ContainerMachineTuto;
-import ed.enderdeath.mod.BaieMachine.GuiMachineTuto;
-import ed.enderdeath.mod.BaieMachine.TileEntityMachineTuto;
-import ed.enderdeath.mod.Extractor.ContainerAlloyer;
-import ed.enderdeath.mod.Extractor.GuiAlloyer;
-import ed.enderdeath.mod.Extractor.TileEntityAlloyer;
+import ed.enderdeath.mod.anvildragon.ContainerDragonAnvil;
+import ed.enderdeath.mod.anvildragon.GuiAnvilDragon;
+import ed.enderdeath.mod.baiemachine.ContainerMachineTuto;
+import ed.enderdeath.mod.baiemachine.GuiMachineTuto;
+import ed.enderdeath.mod.baiemachine.TileEntityMachineTuto;
+import ed.enderdeath.mod.extractor.ContainerAlloyer;
+import ed.enderdeath.mod.extractor.GuiAlloyer;
+import ed.enderdeath.mod.extractor.TileEntityAlloyer;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
